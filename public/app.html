@@ -7,16 +7,13 @@
 <style>
 *{box-sizing:border-box}
 :root{
-  --bg:#07030a;
-  --panel:rgba(18,8,18,.86);
-  --panel2:rgba(30,10,24,.9);
   --pink:#ff4fa3;
   --hot:#ff1f87;
   --soft:#ff9bd0;
   --gold:#ffd36a;
-  --orange:#ff8a2a;
   --green:#36f06d;
-  --line:rgba(255,79,163,.55);
+  --orange:#ff8a2a;
+  --line:rgba(255,79,163,.58);
 }
 body{
   margin:0;
@@ -24,9 +21,9 @@ body{
   color:#fff;
   min-height:100vh;
   background:
-    radial-gradient(circle at top left,rgba(255,79,163,.28),transparent 28%),
-    radial-gradient(circle at top right,rgba(255,79,163,.22),transparent 30%),
-    radial-gradient(circle at center,rgba(80,0,65,.28),transparent 45%),
+    radial-gradient(circle at top left,rgba(255,79,163,.35),transparent 25%),
+    radial-gradient(circle at top right,rgba(255,79,163,.28),transparent 30%),
+    radial-gradient(circle at center,rgba(95,0,80,.32),transparent 45%),
     #07030a;
 }
 body:before{
@@ -47,25 +44,51 @@ body:before{
 .navlinks{display:flex;gap:28px;color:#ffddee;font-weight:800}
 .vipBtn{
   border:1px solid var(--pink);border-radius:10px;padding:12px 22px;
-  color:var(--gold);box-shadow:0 0 18px rgba(255,79,163,.4);background:rgba(15,4,15,.8);font-weight:900
+  color:var(--gold);box-shadow:0 0 18px rgba(255,79,163,.4);
+  background:rgba(15,4,15,.8);font-weight:900
 }
 .hero{
   position:relative;
-  min-height:330px;
+  min-height:500px;
   display:flex;align-items:center;justify-content:center;
-  padding:16px 20px 8px;
+  padding:18px 20px 8px;
   overflow:hidden;
+  border-bottom:1px solid rgba(255,79,163,.35);
 }
-.characters{
-  position:absolute;inset:auto 0 0 0;margin:auto;
-  width:min(780px,100%);opacity:.98;filter:drop-shadow(0 0 25px rgba(255,79,163,.45));
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,rgba(255,79,163,.25),transparent 45%);
   z-index:0;
 }
-.heroText{position:relative;z-index:2;text-align:center;margin-top:20px;text-shadow:0 0 16px #000}
-.logo{width:min(360px,80%);filter:drop-shadow(0 0 18px rgba(255,211,106,.55));margin-bottom:4px}
+.characters{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:min(780px,96%);
+  max-height:520px;
+  object-fit:contain;
+  opacity:.95;
+  filter:drop-shadow(0 0 26px rgba(255,79,163,.58));
+  z-index:1;
+}
+.heroText{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  margin-top:170px;
+  text-shadow:0 0 18px #000,0 0 28px #000;
+}
+.logo{
+  width:min(360px,78%);
+  filter:drop-shadow(0 0 18px rgba(255,211,106,.55));
+  margin-bottom:2px;
+}
 .hero h1{
   margin:0;
-  font-size:clamp(38px,7vw,78px);
+  font-size:clamp(36px,7vw,76px);
   color:#ff78bc;
   letter-spacing:3px;
   text-shadow:0 0 8px #ff2d86,0 4px 0 rgba(80,0,40,.9);
@@ -74,14 +97,21 @@ body:before{
 
 .frame{
   border:1px solid var(--line);
-  background:linear-gradient(180deg,rgba(20,6,18,.92),rgba(10,4,11,.95));
+  background:linear-gradient(180deg,rgba(20,6,18,.93),rgba(10,4,11,.96));
   box-shadow:0 0 30px rgba(255,79,163,.25),inset 0 0 22px rgba(255,79,163,.08);
   border-radius:14px;
   padding:22px;
   margin-bottom:20px;
   position:relative;
 }
-.frame:before,.frame:after{content:"✦";position:absolute;color:var(--pink);font-size:22px;top:-14px;text-shadow:0 0 10px var(--pink)}
+.frame:before,.frame:after{
+  content:"✦";
+  position:absolute;
+  color:var(--pink);
+  font-size:22px;
+  top:-14px;
+  text-shadow:0 0 10px var(--pink)
+}
 .frame:before{left:12px}.frame:after{right:12px}
 .control{
   display:grid;grid-template-columns:1fr 1fr 260px;gap:28px;align-items:end;
@@ -104,13 +134,11 @@ input{
 .deviceRow{display:flex;align-items:center;gap:10px}
 .copyBtn{width:45px;height:45px;padding:0;font-size:20px}
 .ready{color:#66ff85;text-align:center;margin-top:14px;font-weight:900}
-
 .hidden{display:none!important}
 .loading{text-align:center;padding:44px}
 .loader{width:80px;height:80px;border:7px solid #311326;border-top-color:var(--pink);border-radius:50%;margin:auto;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading h2{color:var(--pink);font-size:34px}
-
 .sectionTitle{font-size:28px;color:var(--pink);font-weight:900;margin:6px 0 18px;text-shadow:0 0 14px rgba(255,79,163,.55)}
 .resultGrid{display:grid;grid-template-columns:1.05fr 1.65fr;gap:18px;border:1px solid rgba(255,79,163,.35);border-radius:10px;overflow:hidden}
 .infoPanel,.analysisPanel{padding:18px;background:rgba(0,0,0,.18)}
@@ -138,7 +166,6 @@ input{
 .topRooms{display:grid;grid-template-columns:1fr 260px;gap:16px;margin-top:18px}
 .sideHot h3{color:var(--pink);margin-top:0}
 .sideHot li{margin:13px 0;color:#ffe4f3}
-
 .status{
   border:1px solid var(--green);background:rgba(33,180,76,.18);
   border-radius:10px;text-align:center;color:#65ff8d;padding:18px;font-size:26px;font-weight:900;margin-top:22px
@@ -156,23 +183,25 @@ input{
 .member div{padding:14px;text-align:center;border-right:1px solid rgba(255,79,163,.22);background:rgba(0,0,0,.18)}
 .footer{text-align:center;color:var(--pink);margin:22px 0;font-weight:900;letter-spacing:2px}
 @media(max-width:900px){
-  .navlinks{display:none}.hero{min-height:240px}.characters{opacity:.55}.control,.resultGrid,.chartWrap,.topRooms{grid-template-columns:1fr}
-  .roomsGrid,.bottomActions,.member{grid-template-columns:1fr}.statGrid{grid-template-columns:1fr 1fr}.infoPanel{border-right:0;border-bottom:1px solid rgba(255,79,163,.35)}
+  .navlinks{display:none}.hero{min-height:430px}.characters{width:105%;opacity:.82}.heroText{margin-top:190px}
+  .control,.resultGrid,.chartWrap,.topRooms{grid-template-columns:1fr}
+  .roomsGrid,.bottomActions,.member{grid-template-columns:1fr}.statGrid{grid-template-columns:1fr 1fr}
+  .infoPanel{border-right:0;border-bottom:1px solid rgba(255,79,163,.35)}
 }
 </style>
 </head>
 <body>
 <div class="app">
   <div class="nav">
-    <img src="/assets/banner_logo.png" alt="logo">
+    <img src="/assets/banner_logo.png" alt="戰神賽特">
     <div class="navlinks"><span>首頁</span><span>AI分析</span><span>熱門房號</span><span>戰績記錄</span><span>會員中心</span></div>
     <div class="vipBtn">👑 冥界高級VIP</div>
   </div>
 
   <div class="hero">
-    <img class="characters" src="/assets/characters.webp" alt="characters">
+    <img class="characters" src="/assets/characters.webp" alt="戰神賽特人物">
     <div class="heroText">
-      <img class="logo" src="/assets/banner_logo.png" alt="banner">
+      <img class="logo" src="/assets/banner_logo.png" alt="戰神賽特">
       <h1>AI 賽特選房輔助器</h1>
       <p>AI智能分析・精準選房・提高勝率</p>
     </div>
